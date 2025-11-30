@@ -128,37 +128,5 @@ curl -X POST "http://localhost:8001/usuarios/" \
   -d '{"username":"S-01","email":"vendedor@test.com","rol":"operario"}'
 ```
 
-## Despliegue sugerido
 
-Para producción se recomienda separar la API y la base de datos en instancias diferentes (por ejemplo, EC2 o contenedores orchestrados). Buenas prácticas mínimas:
-
-- Ejecutar `uvicorn` detrás de un servidor ASGI/Proxy (ej. `gunicorn` con `uvicorn.workers.UvicornWorker`) o usar contenedores.
-- Asegurar la base de datos mediante Security Groups o reglas de red (solo permitir acceso desde la API).
-- Configurar variables sensibles mediante secretos o servicios de gestión de secretos.
-
-Ejemplo básico de reglas de seguridad (AWS):
-
-- `SG-API`: permitir inbound `8001/tcp` desde IPs autorizadas y `22/tcp` para administración.
-- `SG-DB`: permitir inbound `5432/tcp` únicamente desde `SG-API`.
-
-## Contribuir
-
-Si deseas contribuir:
-
-1. Fork del repositorio.
-2. Crear una rama feature/bugfix.
-3. Hacer PR con descripción clara de cambios.
-
-## Licencia y Contacto
-
-Indica aquí la licencia del proyecto (por ejemplo `MIT`) o información de contacto del mantenedor.
-
----
-
-Si quieres, puedo:
-
-- Añadir ejemplos concretos de los endpoints disponibles (`GET /usuarios`, `POST /usuarios`, etc.).
-- Incluir un archivo `docker-compose.yml` de desarrollo que levante la API y Postgres juntos.
-
-Dime qué prefieres y lo agrego.
 
